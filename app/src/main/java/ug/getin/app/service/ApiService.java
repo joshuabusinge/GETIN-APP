@@ -20,6 +20,7 @@ public interface ApiService {
 
 
 
-
+    @POST("/girls/register/")
+    void registerGirl(@Body Girl pregnantGirl, Callback<Girl> cb);
 }
 
