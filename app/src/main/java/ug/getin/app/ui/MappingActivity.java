@@ -2,6 +2,7 @@ package ug.getin.app.ui;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,6 +18,7 @@ import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import ug.getin.app.MainActivity;
 import ug.getin.app.R;
 import ug.getin.app.models.Girl;
 import ug.getin.app.service.ApiClient;
@@ -72,6 +74,7 @@ public class MappingActivity extends AppCompatActivity implements Callback<Girl>
             public void onClick(View view) {
                 Girl girl = new Girl();
                 girl.setName(nameField.getText().toString());
+                girl.setDate_of_birth("2000-01-01");
                 girl.setMarital_status("Single");
                 girl.setEducation_level("Primary");
 
@@ -84,7 +87,7 @@ public class MappingActivity extends AppCompatActivity implements Callback<Girl>
     @Override
     public void success(Girl girl, Response response) {
         progressDialog.dismiss();
-        Log.e("SUCCESS", girl.getName());
+        startActivity(new Intent(context, MainActivity.class));
     }
 
     @Override
