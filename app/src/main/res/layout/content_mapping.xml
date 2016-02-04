@@ -34,6 +34,7 @@
 
         <EditText
             android:id="@+id/dob"
+            android:hint="YYYY-MM-DD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -51,7 +52,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Marital Status"/>
+            android:text="Education Level"/>
 
         <Spinner
             android:id="@+id/education_level"
