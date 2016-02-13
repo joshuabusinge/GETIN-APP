@@ -1,5 +1,6 @@
 package ug.getin.app;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     Context context = this;
     ListView girlsListView;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,20 +49,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+
+
         girlsListView = (ListView) findViewById(R.id.girlsListView);
 
         RestAdapter client = new ApiClient().getRestAdapter();
         ApiService service = client.create(ApiService.class);
 
+        progressDialog.show();
+
         service.listGirls(new Callback<List<Girl>>() {
             @Override
             public void success(List<Girl> girls, Response response) {
+                progressDialog.dismiss();
                 girlsListView.setAdapter(new GirlsListAdapter(context, R.layout.girl_list_item, girls));
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                progressDialog.dismiss();
             }
         });
 

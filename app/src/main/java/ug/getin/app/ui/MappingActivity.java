@@ -61,7 +61,7 @@ public class MappingActivity extends AppCompatActivity implements OnClickListene
     DatePickerDialog datePickerDialog;
     SimpleDateFormat dateFormatter;
 
-    Spinner maritalStatusSpinner;
+    Spinner maritalStatusSpinner, has_received_anc_field;
     Spinner educationLevelSpinner, languageSpinner, contactTypeSpinner;
     Button submitBtn;
 
@@ -97,6 +97,13 @@ public class MappingActivity extends AppCompatActivity implements OnClickListene
             "Sibling",
 
     };
+
+    String[] has_received_anc_options = {
+            "Yes",
+            "No",
+    };
+
+
 
 
     String name, dob, marital_status, education_level, number_of_children, village, parish, subcounty;
@@ -135,6 +142,7 @@ public class MappingActivity extends AppCompatActivity implements OnClickListene
         dateField = (EditText) findViewById(R.id.dob);
         maritalStatusSpinner = (Spinner) findViewById(R.id.marital_status);
         educationLevelSpinner = (Spinner) findViewById(R.id.education_level);
+        has_received_anc_field = (Spinner) findViewById(R.id.has_gone_for_anc);
         emergency_contact_field = (EditText) findViewById(R.id.emergency_contact);
         contactTypeSpinner = (Spinner) findViewById(R.id.contact_type);
         contact_number_field = (EditText) findViewById(R.id.contact_number);
@@ -170,6 +178,7 @@ public class MappingActivity extends AppCompatActivity implements OnClickListene
         educationLevelSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, education_levels));
         languageSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, language_options));
         contactTypeSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, contact_types));
+        has_received_anc_field.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, has_received_anc_options));
 
         dateField.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
