@@ -9,7 +9,8 @@ import retrofit.RestAdapter;
 public class ApiClient {
     public RestAdapter getRestAdapter() {
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("http://10.0.3.2:8000/api/")
+//                .setEndpoint("http://10.0.3.2:8000/api/")
+                .setEndpoint("http://getinug.cloudapp.net/api/")
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
 
